@@ -1,8 +1,9 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
-import {useNavigate} from 'react-router-dom'
+import {useNavigate, useParams} from 'react-router-dom'
 
-export default function EditNote({match}) {
+export default function EditNote() {
+    const {id} = useParams();
     const [note, setNote] = useState({
         title: '',
         content: '',
@@ -14,8 +15,8 @@ export default function EditNote({match}) {
     useEffect(() =>{
         const getNote = async () =>{
             const token = localStorage.getItem('tokenStore')
-            if(match.params.id){
-                const res = await axios.get(`/api/notes/${match.params.id}`, {
+            if(id){
+                const res = await axios.get(`/api/notes/${id}`, {
                     headers: {Authorization: token}
                 })
                 setNote({
@@ -27,7 +28,7 @@ export default function EditNote({match}) {
             }
         }
         getNote()
-    },[match.params.id])
+    },[id])
 
     const onChangeInput = e => {
         const {name, value} = e.target;
