@@ -10,7 +10,7 @@ export default function EditNote() {
         date: '',
         id: ''
     })
-    const history = useNavigate()
+    const navigate = useNavigate()
 
     useEffect(() =>{
         const getNote = async () =>{
@@ -50,7 +50,7 @@ export default function EditNote() {
                     headers: {Authorization: token}
                 })
                 
-                return history.push('/')
+                return navigate.push('/')
             }
         } catch (err) {
             window.location.href = "/";
