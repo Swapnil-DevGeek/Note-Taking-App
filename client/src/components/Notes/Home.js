@@ -40,6 +40,8 @@ export default function Home() {
     
 
     return (
+        <>
+        {notes.length === 0 && <h3 className='message'>NO NOTES YET.....</h3> }
         <div className="note-wrapper">
             {
                 notes.map(note =>(
@@ -60,5 +62,6 @@ export default function Home() {
             }
             
         </div>
+        </>
     )
 }

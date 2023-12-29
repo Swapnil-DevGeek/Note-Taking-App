@@ -8,6 +8,12 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
+
+  .message {
+    text-align: center;
+    margin-top: 10%;
+    font-size: 3rem;
+  }
   
   code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
@@ -35,6 +41,16 @@
   a{
     text-decoration: none;
     color: whitesmoke;
+  }
+  .login-logo {
+    text-align: center;
+    padding-top: 70px;
+  }
+  .login-logo h1{
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: whitesmoke;
+    font-size: 3rem;
   }
   .notes-page header .logo{
     text-transform: uppercase;
