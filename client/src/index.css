@@ -72,7 +72,6 @@
     position: relative;
     color: #ddd;
     margin: 15px;
-    cursor: pointer;
   }
   .card .close{
     position: absolute;
@@ -97,7 +96,7 @@
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 7;
-    overflow: hidden;
+    overflow: auto;
     margin: 10px 0;
     color: #fff9;
   }

@@ -22,18 +22,22 @@ export default function Home() {
         }
     }, [])
 
-    const deleteNote = async (id) =>{
+    const deleteNote = async (id) => {
         try {
-            if(token){
-                await axios.delete(`api/notes/${id}`, {
-                    headers: {Authorization: token}
-                })
-                getNotes(token)
+            if (token) {
+                const confirmDelete = window.confirm('Are you sure you want to delete this note?');
+                if (confirmDelete) {
+                    await axios.delete(`api/notes/${id}`, {
+                        headers: { Authorization: token }
+                    });
+                    getNotes(token);
+                }
             }
         } catch (error) {
             window.location.href = "/";
         }
-    }
+    };
+    
 
     return (
         <div className="note-wrapper">
