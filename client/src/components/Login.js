@@ -7,12 +7,12 @@ export default function Login({setIsLogin}) {
 
     const onChangeInput = e =>{
         const {name, value} = e.target;
-        setUser({...user, [name]:value})
-        setErr('')
+        setUser({...user, [name]:value});
+
     }
 
-    const registerSubmit = async e =>{
-        e.preventDefault()
+    const registerSubmit = async (e) =>{
+        e.preventDefault();
         try {
             const res = await axios.post('/users/register',{
                 username: user.name,
@@ -41,10 +41,10 @@ export default function Login({setIsLogin}) {
         }
     }
 
-    const [onLogin, setOnLogin] = useState(false)
+    const [displayRegister, setDisplayRegister] = useState(false)
     const style = {
-        visibility: onLogin ? "visible" : "hidden",
-        opacity: onLogin ? 1 : 0
+        visibility: displayRegister ? "visible" : "hidden",
+        opacity: displayRegister ? 1 : 0
     }
 
     return (
@@ -63,7 +63,7 @@ export default function Login({setIsLogin}) {
 
                     <button type="submit">Login</button>
                     <p>You don't have an account?
-                        <span onClick={() => setOnLogin(true)}> Register Now</span>
+                        <span onClick={() => setDisplayRegister(true)}> Register Now</span>
                     </p>
                     <h3>{err}</h3>
                 </form>
@@ -85,7 +85,7 @@ export default function Login({setIsLogin}) {
 
                     <button type="submit">Register</button>
                     <p>You have an account?
-                        <span onClick={() => setOnLogin(false)}> Login Now</span>
+                        <span onClick={() => setDisplayRegister(false)}> Login Now</span>
                     </p>
                     <h3>{err}</h3>
                 </form>

@@ -34,7 +34,6 @@ const userControl = {
             // login success
             const payload = {id: user._id, name: user.username}
             const token = jwt.sign(payload, process.env.TOKEN_SECRET, {expiresIn: "1d"})
-
             res.json({token})
         } catch (err) {
             return res.status(500).json({msg: err.message})
@@ -46,10 +45,10 @@ const userControl = {
             const token = req.header("Authorization")
             if(!token) return res.send(false)
 
-            jwt.verify(token, process.env.TOKEN_SECRET, async (err, verified) =>{
+            jwt.verify(token, process.env.TOKEN_SECRET, async (err, decoded) =>{
                 if(err) return res.send(false)
 
-                const user = await Users.findById(verified.id)
+                const user = await Users.findById(decoded.id)
                 if(!user) return res.send(false)
 
                 return res.send(true)

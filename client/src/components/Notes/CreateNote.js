@@ -8,15 +8,14 @@ export default function CreateNote() {
         content: '',
         date: ''
     })
-    const history = useNavigate()
+    const navigate = useNavigate()
 
     const onChangeInput = e => {
         const {name, value} = e.target;
         setNote({...note, [name]:value})
     }
 
-
-    const createNote = async e => {
+    const createNote = async (e) => {
         e.preventDefault()
         try {
             const token = localStorage.getItem('tokenStore')
@@ -30,7 +29,7 @@ export default function CreateNote() {
                     headers: {Authorization: token}
                 })
                 
-                return history.push('/')
+                return navigate.push('/')
             }
         } catch (err) {
             window.location.href = "/";
